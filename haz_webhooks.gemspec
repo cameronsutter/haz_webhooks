@@ -7,14 +7,14 @@ Gem::Specification.new do |spec|
   spec.name          = "haz_webhooks"
   spec.version       = HazWebhooks::VERSION
   spec.authors       = ["Cameron Sutter"]
-  spec.email         = ["csutter@instructure.com"]
-  spec.description   = %q{Easily add and fire webhooks for any ActiveRecord model}
+  spec.email         = ["cameronsutter0@gmail.com"]
+  spec.description   = %q{Easily fire webhooks for any ActiveRecord model}
   spec.summary       = %q{Webhooks for Rails}
-  spec.homepage      = ""
+  spec.homepage      = "https://github.com/cameronsutter/haz_webhooks"
   spec.license       = "MIT"
 
-  gem.add_dependency "activerecord"
-  gem.add_dependency "httparty"
+  spec.add_dependency "activerecord"
+  spec.add_dependency "httparty"
 
   spec.files         = `git ls-files`.split($/)
   spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
