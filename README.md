@@ -18,7 +18,25 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+1. add `haz_webhooks` to any ActiveRecord model with an array of events (arbitrary strings)
+
+    class User < ActiveRecord::Base
+      haz_webhooks ['post','update','score']
+    end
+
+2. set the url
+
+    User.find(1).webhooks.event('post').set('www.example.com/receive_webhook')
+
+3. fire the webhook
+
+    data = {
+      :id => post.id,
+      :name => post.name,
+      :poster => user.name
+    }
+
+    User.find(1).webhooks.event('post').fire(data)
 
 ## Contributing
 
