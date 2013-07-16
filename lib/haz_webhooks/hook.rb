@@ -1,5 +1,5 @@
 module HazWebhooks
-  module Actor
+  module Hook
     extend ActiveSupport::Concern
 
     included do
@@ -22,4 +22,4 @@ module HazWebhooks
   end
 end
 
-ActiveRecord::Base.send :include, HazWebhooks::Actor
+ActiveRecord::Base.send :include, HazWebhooks::Hook

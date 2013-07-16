@@ -1,3 +1,5 @@
+require 'httparty'
+
 module HazWebhooks
   class Webhook < ::ActiveRecord::Base
     include HTTParty
@@ -17,8 +19,6 @@ module HazWebhooks
 
     scope :active, where(:active => true)
 
-    scope :event, lambda do |name|
-      active.where(:key => name)
-    end
+    scope :event, lambda {|name| active.where(:key => name)}
   end
 end
