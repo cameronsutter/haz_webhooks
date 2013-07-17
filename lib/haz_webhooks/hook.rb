@@ -9,12 +9,15 @@ module HazWebhooks
       #events is an array of strings that are the key for the event
       def haz_webhooks(events)
         class_eval do
-          has_many :webhooks, :class_name => 'HazWebhooks::Webhook'
-        end
-
-        #initialize with events
-        events.each do |e|
-          self.webhooks.create(:key => e)
+          @webhook_events = events
+          has_many :webhooks, :as => :hook, :class_name => 'HazWebhooks::Webhook'
+          
+          def after_initialize
+            #initialize with events
+            @webhook_events.each do |e|
+              self.webhooks.create(:key => e, :active => true)
+            end
+          end
         end
       end
     end

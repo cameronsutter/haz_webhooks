@@ -16,6 +16,11 @@ Or install it yourself as:
 
     $ gem install haz_webhooks
 
+Then run:
+
+    rails generate haz_webhooks:install
+    rake db:migrate
+
 ## Usage
 
 add `haz_webhooks` to any ActiveRecord model with an array of events (arbitrary strings)

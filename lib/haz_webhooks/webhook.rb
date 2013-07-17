@@ -3,8 +3,8 @@ require 'httparty'
 module HazWebhooks
   class Webhook < ::ActiveRecord::Base
     include HTTParty
-    belongs_to :actor, :polymorphic => true
-    attr_accessible :url, :key, :active
+    belongs_to :hook, :polymorphic => true
+    attr_accessible :url, :key, :active, :hook_id
 
     def set(theURL)
       self.url = theURL
