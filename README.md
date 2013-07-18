@@ -31,7 +31,7 @@ add `haz_webhooks` to any ActiveRecord model with an array of events (arbitrary 
 
 set the url
 
-    User.find(1).webhooks.event('post').set('www.example.com/receive_webhook')
+    User.find(1).set_webhook('post', 'www.example.com/receive_webhook')
 
 fire the webhook
 
@@ -41,7 +41,15 @@ fire the webhook
       :poster => user.name
     }
 
-    User.find(1).webhooks.event('post').fire(data)
+    User.find(1).fire_webhook('post', data)
+
+See webhook url
+
+    User.find(1).webhook_url('score')
+
+See Class webhook events (returns an array of strings)
+
+    User.webhook_events
 
 ## Contributing
 
