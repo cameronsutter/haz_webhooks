@@ -1,0 +1,115 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Haz webhooks by cameronsutter</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/main.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+
+      <header>
+        <h1>Haz webhooks</h1>
+        <p>Webhooks for Rails</p>
+      </header>
+
+      <div id="banner">
+        <span id="logo"></span>
+
+        <a href="https://github.com/cameronsutter/haz_webhooks" class="button fork"><strong>View On GitHub</strong></a>
+        <div class="downloads">
+          <span>Downloads:</span>
+          <ul>
+            <li><a href="https://github.com/cameronsutter/haz_webhooks/zipball/master" class="button">ZIP</a></li>
+            <li><a href="https://github.com/cameronsutter/haz_webhooks/tarball/master" class="button">TAR</a></li>
+          </ul>
+        </div>
+      </div><!-- end banner -->
+
+    <div class="wrapper">
+      <nav>
+        <ul></ul>
+      </nav>
+      <section>
+        <h1>
+<a name="hazwebhooks" class="anchor" href="#hazwebhooks"><span class="octicon octicon-link"></span></a>HazWebhooks</h1>
+
+<p>Easily fire webhooks for any ActiveRecord model</p>
+
+<h2>
+<a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h2>
+
+<p>Add this line to your application's Gemfile:</p>
+
+<pre><code>gem 'haz_webhooks'
+</code></pre>
+
+<p>And then execute:</p>
+
+<pre><code>$ bundle
+</code></pre>
+
+<p>Or install it yourself as:</p>
+
+<pre><code>$ gem install haz_webhooks
+</code></pre>
+
+<p>Then run:</p>
+
+<pre><code>rails generate haz_webhooks:install
+rake db:migrate
+</code></pre>
+
+<h2>
+<a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<p>add <code>haz_webhooks</code> to any ActiveRecord model with an array of events (arbitrary strings)</p>
+
+<pre><code>class User &lt; ActiveRecord::Base
+  haz_webhooks ['post','update','score']
+end
+</code></pre>
+
+<p>set the url</p>
+
+<pre><code>User.find(1).set_webhook('post', 'www.example.com/receive_webhook')
+</code></pre>
+
+<p>fire the webhook</p>
+
+<pre><code>data = {
+  :id =&gt; post.id,
+  :name =&gt; post.name,
+  :poster =&gt; user.name
+}
+
+User.find(1).fire_webhook('post', data)
+</code></pre>
+
+<p>See webhook url</p>
+
+<pre><code>User.find(1).webhook_url('score')
+</code></pre>
+
+<p>See Class webhook events (returns an array of strings)</p>
+
+<pre><code>User.webhook_events
+</code></pre>
+      </section>
+      <footer>
+        <p>Project maintained by <a href="https://github.com/cameronsutter">cameronsutter</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></small></p>
+      </footer>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>
