@@ -40,7 +40,7 @@ module HazWebhooks
       end
     end
 
-    def fire_webhook(key, data)
+    def fire_webhook(key, data=nil)
       hook = self.webhooks.event(key).first
       hook.fire(data) if !hook.nil?
     end

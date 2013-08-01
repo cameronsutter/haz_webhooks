@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["cameronsutter0@gmail.com"]
   spec.description   = %q{Easily fire webhooks for any ActiveRecord model}
   spec.summary       = %q{Webhooks for Rails}
-  spec.homepage      = "https://github.com/cameronsutter/haz_webhooks"
+  spec.homepage      = "http://cameronsutter.github.io/haz_webhooks/"
   spec.license       = "MIT"
 
   spec.add_dependency "activerecord"

@@ -11,7 +11,7 @@ module HazWebhooks
       save
     end
 
-    def fire(data)
+    def fire(data=nil)
       Thread.new do
         post(url, :query => data)
       end
